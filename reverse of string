@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include<string.h>
+void rec(int n,char arr[n])
+{
+    int i;
+    printf("reverse\n");
+    for(i=0;i<n;i++)
+    {
+        printf("%c",arr[n-1-i]);
+    }
+}
+int main()
+{
+    int i;
+    char str[100];
+    printf("enter the string");
+    scanf("%s",str);
+    i=strlen(str);
+    rec(i,str);
+    return 0;
+}
