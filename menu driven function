@@ -1,0 +1,90 @@
+#include <stdio.h>
+void display(int n,int m,int arr[n][m])
+{
+    int i,j;
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<m;j++)
+        {
+            printf("%d\t",arr[i][j]);
+        }
+        printf("\n");
+    }
+    
+}
+void add(int n,int m,int a1[n][m],int a2[n][m])
+{
+    int sum[n][m],i,j;
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<m;j++)
+        {
+            sum[i][j]=a1[i][j]+a2[i][j];
+        }
+    }
+    display(n,m,sum);
+}
+void read(int n,int m,int a1[n][m])
+{
+    int i,j;
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<m;j++)
+        {
+         printf("arr[%d][%d]:\n",i,j);
+         scanf("%d",&a1[i][j]);
+        }
+    }
+    
+}
+void transpose(int n,int m, int a1[n][m])
+{
+    int i,j;
+      for(i=0;i<m;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+         printf("%d\t",a1[j][i]);
+        }
+        printf("\n");
+    }
+    
+    
+}
+int main()
+{
+    int n,m,c;
+    printf("enter the number of rows and columsn");
+    scanf("%d",&n);
+    printf("enter the number of rows and columsn");
+    scanf("%d",&m);
+    do
+    {
+    printf("menu 1.add matri 2.transpose matrix 3.exit");
+    scanf("%d",&c);
+    
+    switch(c)
+    {
+        case 1:
+        {
+            int a1[n][m],a2[n][m];
+            printf("read the first");
+            read(n,m,a1);
+            printf("read the secind");
+            read(n,m,a2);
+            add(n,m,a1,a2);
+            break;}
+        case 2:
+        {
+        int a1[n][m];
+        printf("enter the ma");
+        read(n,m,a1);
+        transpose(n,m,a1);
+        break;
+        }
+        case 3:
+        printf("exiting");
+        
+    }}while(c!=3);
+    return 0;
+}
