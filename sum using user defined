@@ -1,0 +1,52 @@
+#include <stdio.h>
+void display(int n,int m,int arr[n][m])
+{
+    int i,j;
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<m;j++)
+        {
+            printf("%d\t",arr[i][j]);
+        }
+        printf("\n");
+    }
+    
+}
+void add(int n,int m,int a1[n][m],int a2[n][m])
+{
+    int sum[n][m],i,j;
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<m;j++)
+        {
+            sum[i][j]=a1[i][j]+a2[i][j];
+        }
+    }
+    display(n,m,sum);
+}
+int read(int n,int m,int a1[n][m])
+{
+    int i,j;
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<m;j++)
+        {
+         printf("arr[%d][%d]:\n",i,j);
+         scanf("%d",&a1[i][j]);
+        }
+    }
+    
+}
+int main()
+{
+    int n,m;
+    printf("enter the number of rows and columsn");
+    scanf("%d",&n);
+    printf("enter the number of rows and columsn");
+    scanf("%d",&m);
+    int a1[n][m],a2[n][m];
+    read(n,m,a1);
+    read(n,m,a2);
+    add(n,m,a1,a2);
+    return 0;
+}
