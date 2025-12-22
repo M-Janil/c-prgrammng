@@ -1,0 +1,31 @@
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+    int k=0,ognum=0,rem=0,sum=0,rev=0,n,i,x;
+    printf("enter the umber to be checked\n");
+    scanf("%d",&n);
+    ognum=n;
+    while(n!=0)
+    {
+        n=n/10;
+        k++;
+    }
+    n=ognum;
+    for(i=0;i<k;i++)
+    {
+        x=n/10;
+        rem=n%10;
+        sum=sum+pow(rem,k);
+        rev=rev*10+(n%10);
+        n=n/10;
+    }
+    if(sum==ognum)
+    {
+    printf("armstrong\n");
+    printf("reverse=%d",rev);
+    }
+    else
+    printf("not armstrong");
+    return 0 ;
+}
