@@ -1,0 +1,97 @@
+#include <stdio.h>
+#include<string.h>
+int i=0;
+struct book
+{
+    char name[50];
+    char author[50];
+    int price;
+}details[100];
+void add(struct book details[])
+{
+    printf("enter the book name\n");
+    scanf("%s",details[i].name);
+    printf("enter the author name\n");
+    scanf("%s",details[i].author);
+    printf("enter the book price\n");
+    scanf("%d",&details[i].price);
+    i++;
+}
+void delete(struct book details[])
+{
+    int k,p=0,j;
+    char del[50];
+    printf("enter the book tobe deleted\n");
+    scanf("%s",del);
+    for(k=0;k<i;k++)
+    {
+        if(strcmp(del,details[k].name)==0)
+        {
+            p=1;
+            for(j=k;j<i-1;j++)
+            {
+            strcpy(details[k].name,details[k+1].name);
+            strcpy(details[k].author,details[k+1].author);
+            details[k].price=details[k+1].price;
+        }
+    }}
+    if(p==0)
+    {
+        printf("such a book not present");
+    }
+    else
+    {
+        i--;
+    }
+    
+}
+void search(struct book details[])
+{
+    int k,p=0;
+    char ar[50];
+    printf("eneter the book name");
+    scanf("%s",ar);
+    for(k=0;k<i;k++)
+    {
+        if(strcmp(ar,details[k].name)==0)
+        {
+         printf("%s",details[k].name);
+         printf("%s",details[k].author);
+         printf("%d",details[k].price);
+         p=1;
+        }
+    }
+    if(p==0)
+    printf("book not found");
+}
+int main()
+{
+    int c;
+    do{
+    printf("menu 1.add a book detail 2. delete a book detail 3.search for a book 4.exit");
+    scanf("%d",&c);
+    switch(c)
+    {
+        case 1:
+        {
+            add(details);
+            break;
+        }
+        case 2:
+        {
+            delete(details);
+            break;
+        }
+        case 3:
+        {
+            search(details);
+            break;
+        }
+        case 4:
+        {
+        printf("exiting");
+        break;
+        }
+    }}while(c!=4);
+    return 0;
+}
