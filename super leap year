@@ -1,0 +1,41 @@
+#include<stdio.h>
+int main()
+{
+    int year,i,flag=0,sign=0,s=0,n,k=0;
+    printf("enter the year to be checked");
+    scanf("%d",&year);
+    if(year%4==0)
+    {
+        printf("loop year");
+        flag=1;
+    }
+    else 
+    { 
+        printf("not a loop year");
+        flag=0;
+    }
+    if(flag==1)
+    {
+        n=year/10;
+        if(n>=1)
+        {
+            k=k+1;
+            s=s+(n%10);
+        }
+        for(i=2;i<n;i++)
+        {
+            if(s%i==0)
+            {
+                sign=1;
+            }
+        }
+        if(sign==1)
+        {
+            printf("not a super leap year");
+        }
+        else 
+        printf("super leap year");
+    }
+    return 0;
+}
+    
