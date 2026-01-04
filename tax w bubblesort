@@ -1,0 +1,53 @@
+#include<stdio.h>
+struct emp
+{
+    char name[10];
+    float tax;
+    long int s;
+};
+int main()
+{
+    int i,j,k,tax=0,temp=0;
+    int a[k];
+    printf("enter no of emp");
+    scanf("%d",&k);
+    struct emp employee[k];
+    for(i=0;i<k;i++)
+    {
+        printf("enter name");
+        scanf("%s",employee[i].name);
+         printf("enter s");
+        scanf("%ld",&employee[i].s);
+        if(employee[i].s>400000)
+     {
+         employee[i].tax=employee[i].s*0.02;
+     }
+     else{
+     employee[i].tax=0;}
+    }
+    printf("tax");
+    for(i=0;i<k;i++)
+    {
+        printf("tax %d emploee %f",i,employee[i].tax);
+    }
+    for(i=0;i<k;i++)
+    {
+        a[i]=employee[i].s;}
+    for(i=0;i<k-1;i++)
+    {
+        for(j=0;j<k-i-1;j++)
+        {
+            if(a[j]>a[j+1])
+            {
+                temp=a[j];
+                a[j+1]=a[j];
+                a[j+1]=temp;
+            }
+        }
+    }
+    for(i=0;i<k;i++)
+    {
+        printf("%ld \n",a[i]);
+    }
+    return 0;
+}
