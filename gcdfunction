@@ -1,0 +1,21 @@
+void gcd(int a,int b)
+{
+    int i,f,k=a;
+    if(a>b)
+    k=b;
+    for(i=1;i<=k;i++)
+    {
+        if(a%i==0 && b%i==0)
+        {
+            f=i;
+        }
+    }
+    printf("gcd %d",f);
+    
+}
+int main()
+{
+    int a=5,b=10;
+    gcd(a,b);
+    return 0;
+}
