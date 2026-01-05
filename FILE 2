@@ -1,0 +1,78 @@
+#include<stdio.h>
+void read()
+{
+    int n;
+    char ch;
+    FILE *fp;
+    fp=fopen("data.txt","r");
+    char str[50];
+    while((ch=fgetc(fp))!=EOF)
+    {
+         printf("%c",ch);
+    }
+    fclose(fp);
+}
+void append()
+{
+    char string[100];
+    FILE *fp;
+    fp=fopen("data.txt","a");
+    printf("enter the string to be appended");
+    scanf("%s",string);
+    fprintf(fp,"%s",string);
+    fclose(fp);
+}
+void count()
+{
+    int c=0,l=0,w=0;
+    char string[100],ch;
+    FILE *fp,*ptr;
+    fp=fopen("data.txt","r");
+    while((ch=fgetc(fp))!=EOF)
+    {
+        c++;
+        if(ch=='\n')
+        {l++;}
+        if(ch==' ')
+        {
+            w++;
+        }
+    }
+    w++;
+    fclose(fp);
+    ptr=fopen("text.txt","w");
+    fprintf(ptr,"charcter=%d",c);
+    fprintf(ptr,"line=%d",l);
+    fprintf(ptr,"words=%d",w);
+    fclose(ptr);
+}
+int main()
+{
+    int i,c;
+    do{
+    printf("1.read and display file 2.append file 3.count the charcters,words,lines in it and store it in another file 4.exit");
+    scanf("%d",&c);
+    switch(c)
+    {
+        case 1:
+        {
+            read();
+            break;
+        }
+        case 2:
+        {
+            append();
+            break;
+        }
+        case 3:
+        {
+            count();
+            break;
+        }
+        case 4:
+        printf("exiting");
+        break;
+    }
+}while(c!=4);
+    return 0;
+}
