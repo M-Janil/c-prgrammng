@@ -1,0 +1,122 @@
+#include<stdio.h>
+#include<string.h>
+struct st{
+    char fname[50];
+    char lname[50];
+    char dept[5];
+    char id[100];
+};
+void email(char fname[],char lname[],char dept[],int c,struct st student[])
+{
+    char e[100];
+    int i,j,n,l,k;
+    n=strlen(fname);
+    for(i=0;i<n;i++)
+    {
+        while(fname[i]>=65&&fname[i]<=90)
+        {
+            fname[i]=fname[i]+32;
+        }
+    }
+    strcpy(student[c-1].fname,fname);
+    l=strlen(lname);
+    for(i=0;i<l;i++)
+    {
+        while(lname[i]>=65&&lname[i]<=90)
+        {
+            lname[i]=lname[i]+32;
+        }
+    }
+    strcpy(student[c-1].lname,lname);
+    j=strlen(dept);
+    for(i=0;i<j;i++)
+    {
+        while(dept[i]>=65&&dept[i]<=90)
+        {
+            dept[i]=dept[i]+32;
+        }
+    }
+    strcpy(student[c-1].dept,dept);
+    
+  strcat(e,student[c-1].fname);
+  strcat(e,".");
+  strcat(e,student[c-1].lname);
+  strcat(e,"-");
+  strcat(e,student[c-1].dept);
+  strcat(e,"@mace.edu");
+    k=strlen(e);
+    e[k]='\0';
+    strcpy(student[c-1].id,e);
+    printf("%s",student[c-1].id);
+    e[0]='\0';
+}
+void search(struct st student[],char name[],int *p)
+{
+    int i,t,u;
+      t=strlen(name);
+    for(i=0;i<*p;i++){
+  
+    {
+        if(strncmp(student[i].id,name,t)==0)
+        {
+        printf("%s",student[i].id);
+    }}}
+}
+void co(struct st student[],char count[],int *p,int x)
+{
+    int i,n,l,j,st=0,flag=0;
+    for(i=0;i<*p;i++)
+    {
+        if(strcmp(student[i].dept,count)==0)
+        {
+            st++;
+        }
+    }
+    printf("no of students in %s dept =%d",count,st);
+}
+int main()
+{
+    int *p,i,c,n,x,k=0;
+    p=&k;
+    struct st student[50];
+    char fname[50],lname[50],dept[5],name[50],count[5];
+
+    do{
+        printf("menu 1. generate emailid 2.search for id 3.count the students");
+        scanf("%d",&n);
+        switch(n)
+        {
+            case 1:
+            {
+                  printf("enter the first name");
+    scanf("%s",fname);
+    printf("enter the last name");
+    scanf("%s",lname);
+    printf("enter the dept");
+    scanf("%s",dept);
+                k++;
+                email(fname,lname,dept,k,student);
+                break;
+        }
+        case 2:
+        {
+            printf("enter name to be searcged");
+            scanf("%s",name);
+            search(student,name,&k);
+            break;
+}
+        case 3:
+        {
+        printf("enter dept to be counted");
+        scanf("%s",count);
+        x=strlen(count);
+        co(student,count,&k,x);
+        break;
+        }
+        case 4:
+        printf("exitig");
+        break;
+        }}while(n!=4);
+        return 0;
+    }
+        
