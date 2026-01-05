@@ -1,0 +1,160 @@
+#include<stdio.h>
+struct st
+{
+    char name[30];
+    int id;
+    int m1;
+    int m2;
+    int m3;
+    float average;
+};
+char gradecalc(int n)
+{
+    char grade;
+    if(n>=80)
+        {
+            grade='A';
+        }
+        else if(n>=60&&n<=79)
+        {
+            grade='B';
+        }
+         else if(n>=40&&n<=59)
+        {
+            grade='C';
+            
+        }
+         else if(n<=40)
+        {
+            grade='F';
+            
+        }
+        return grade;
+}
+void record(struct st student[],int arr[],int *p)
+{
+    int n,k,l,m;
+    printf("enter the rollno");
+    scanf("%d",&n);
+    if(arr[n]!=0)
+    {
+        printf("already exists");
+        return ;
+    }
+    else if(arr[n]==0)
+    {
+        student[*p].id=n;
+        printf("enter the name");
+        scanf("%s",student[*p].name);
+        printf("enter the mark 1");
+        scanf("%d",&m);
+        if(m>=0&&m<=100)
+        {
+            student[*p].m1=m;
+        }
+        else {printf("invalid ");
+        return ;}
+          printf("enter the mark 2");
+        scanf("%d",&k);
+          if(k>=0&&k<=100)
+        {
+            student[*p].m2=k;
+        }
+         else {printf("invalid ");
+        return ;}
+          printf("enter the mark 1");
+        scanf("%d",&l);
+          if(l>=0&&l<=100)
+        {
+            student[*p].m3=l;
+        }
+         else {printf("invalid ");
+        return ;}
+        (*p)++;
+    }
+}
+void search(struct st student[],int *p)
+{
+    int n,i,flag=0;
+    printf("enter the roll number to br searched");
+    scanf("%d",&n);
+    for(i=0;i<*p;i++)
+    {
+        if(student[i].id==n)
+        {
+            printf("name %s \n",student[i].name);
+            printf("roll %d \n",student[i].id);
+            printf("marks 1 %d \n",student[i].m1);
+            printf("marks 2 %d \n",student[i].m2);
+            printf("marks 3 %d \n",student[i].m3);
+            flag=1;
+        }
+    }
+    if(flag!=1)
+    printf("invalid id");
+}
+void calculate(struct st student[],int *p)
+{
+    float avg=0;
+    int j;
+    char grade;
+    for(j=0;j<*p;j++)
+    {
+        avg=(student[j].m1+student[j].m2+student[j].m3)/3;
+        student[j].average=avg;
+        grade=gradecalc(avg);
+        printf("student w roll no %d %c \n",student[j].id,grade);
+        
+    }
+    
+}
+void failed(struct st student[],int *p)
+{
+    int i;
+    for(i=0;i<*p;i++)
+    {
+        if(student[i].m1<40||student[i].m2<40||student[i].m3<40)
+        {
+            printf("%s",student[i].name);
+        }
+        else if(student[i].m1>+40&&student[i].m2>=40&&student[i].m3>=40){
+        printf("no failed subjects");
+    }}
+}
+int main()
+{
+    int n,i=0;
+    int arr[100]={0};
+    struct st student[100];
+    do{
+    printf("e1.add newstudnt 2.search for a student 3.calculate and display avg 4.students who failed");
+    scanf("%d",&n);
+    switch(n)
+    {
+        case 1:
+        {
+            record(student,arr,&i);
+            break;
+        }
+        case 2:
+        {
+            search(student,&i);
+            break;
+        }
+        case 3:
+        {
+            calculate(student,&i);
+            break;
+        }
+        case 4:
+        {
+            failed(student,&i);
+            break;
+        }
+        case 5:
+        printf("exiting");
+        break;
+    }
+}while(n!=5);
+    return 0;
+}
